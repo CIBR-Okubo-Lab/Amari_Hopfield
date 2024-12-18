@@ -1,6 +1,7 @@
 This is an excercise to understand how Amari-Hopfield network works.
 
 The notation is based on [Hopfield (PNAS, 1982)](https://www.pnas.org/doi/10.1073/pnas.79.8.2554).
+
 Note that an identical model was proposed 10 years earlier [Amari (1972)](https://ieeexplore.ieee.org/document/1672070).
 
 # Problem setup
