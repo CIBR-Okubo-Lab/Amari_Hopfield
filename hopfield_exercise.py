@@ -40,7 +40,7 @@ im_noise = utils.add_noise(images, input_image, p_flip)
 # T = ...
 
 # initialize the state of the network
-x = im_noise.flatten().astype(np.float64)  # input
+V = im_noise.flatten().astype(np.float64)  # input
 E = []  # list for storing energy at each time step
 
 if visualize:
@@ -49,16 +49,16 @@ if visualize:
 # setup plot for animation
 fig, ax, img, energy_line = utils.setup_plot(size, L)
 
-def update(frame, x, E):
+def update(frame, V, E):
     # [Step 2]: pick a single neuron at random, update its state (~ 2 lines)
     # i = ...
-    # x[i] = ...
+    # V[i] = ...
 
     # [Step 3]: calculate the energy of the entire network (~ 1 line)
     # energy = ...
     E.append(energy)
 
-    img.set_data(x.reshape(size))  # update the network state
+    img.set_data(V.reshape(size))  # update the network state
     energy_line.set_data(range(len(E)), E)  # update the energy line
     ax[1].relim() 
     ax[1].autoscale_view()
@@ -66,5 +66,5 @@ def update(frame, x, E):
     return [img, energy_line]
 
 # create the animation
-ani = FuncAnimation(fig, update, frames=L, blit=False, interval=10, fargs=(x, E))
+ani = FuncAnimation(fig, update, frames=L, blit=False, interval=10, fargs=(V, E))
 plt.show()
